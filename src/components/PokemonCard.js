@@ -26,7 +26,7 @@ const TYPE_COLORS = {
 };
 
 const SECONDARY_COLORS = {
-  normal: "#A8A77A",
+  normal: "#8b8a67",
   fire: "#D12929",
   water: "#185CEB",
   electric: "#F7D02C",
@@ -102,7 +102,14 @@ const PokemonCard = ({ pokemon }) => {
               {pokemonDetails.name
                 .toLowerCase()
                 .split("-")
-                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                .map((s) => {
+                  if (s === "m") {
+                    return "♂";
+                  } else if (s === "f") {
+                    return "♀";
+                  }
+                  return s.charAt(0).toUpperCase() + s.substring(1);
+                })
                 .join(" ")}
             </h3>
             <p>
