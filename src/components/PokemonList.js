@@ -2,7 +2,7 @@ import PokemonCard from "./PokemonCard";
 
 const PokemonList = ({ pokemonList }) => {
   return (
-    <ul>
+    <ul className="pokemon-list">
       {pokemonList.map((pokemon) => (
         <PokemonCard key={pokemon.id} pokemon={pokemon} />
       ))}
