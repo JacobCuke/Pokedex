@@ -68,6 +68,7 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <li>
       <article
+        className="pokemon-card"
         style={{
           background: `radial-gradient(circle at top, ${typeColorGradient[0]} 35%, ${typeColorGradient[1]}) 100%`,
         }}
@@ -97,13 +98,13 @@ const PokemonCard = ({ pokemon }) => {
               }
               alt={pokemonDetails.name}
             />
-            <p>
+            <h3>
               {pokemonDetails.name
                 .toLowerCase()
                 .split("-")
                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                 .join(" ")}
-            </p>
+            </h3>
             <p>
               {pokemonDetails.types.map((type) => (
                 <span

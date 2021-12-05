@@ -1,3 +1,5 @@
+@import url("http://fonts.cdnfonts.com/css/pokemon-solid");
+
 .body {
   background-color: #fafafa;
   margin: 0;
@@ -34,7 +36,7 @@
   flex-wrap: wrap;
 }
 
-.pokemon-list article {
+.pokemon-card {
   background-color: pink;
   border: 1px solid black;
 
@@ -49,7 +51,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.pokemon-list article:hover {
+.pokemon-card:hover {
   transform: scale(1.1);
 }
 
@@ -63,4 +65,13 @@
   opacity: 0.5;
   top: -24px;
   right: -85px;
+}
+
+.pokemon-card h3 {
+  font-family: "Pokemon Solid", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 0;
+  color: #003a70;
+  text-shadow: 0 0 5px #ffcb05, 0 0 5px #ffcb05;
 }
