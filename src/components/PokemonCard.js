@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { getPokemonDetails } from "./Api.js";
 import loadingWheel from "../assets/img/loading-wheel.png";
-import pokeballIcon from "../assets/img/pokeball-icon.jpg";
+import pokeballIcon from "../assets/img/pokeball-icon3.png";
 
 const TYPE_COLORS = {
   normal: "#A8A77A",
@@ -83,6 +83,13 @@ const PokemonCard = ({ pokemon }) => {
           </>
         ) : (
           <>
+            <div className="pokeball-icon-container">
+              <img
+                className="pokeball-icon"
+                src={pokeballIcon}
+                alt="pokeball icon"
+              />
+            </div>
             <img
               className="pokemon-sprite"
               src={

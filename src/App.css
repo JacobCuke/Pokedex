@@ -12,6 +12,7 @@
 .pokemon-sprite {
   /* image-rendering: pixelated; */
   width: 130px;
+  z-index: 1;
 }
 
 .loading-sprite {
@@ -50,4 +51,16 @@
 
 .pokemon-list article:hover {
   transform: scale(1.1);
+}
+
+.pokeball-icon-container {
+  position: relative;
+}
+
+.pokeball-icon {
+  position: absolute;
+  width: 170px;
+  opacity: 0.5;
+  top: -24px;
+  right: -85px;
 }
