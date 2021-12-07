@@ -1,5 +1,10 @@
 @import url("http://fonts.cdnfonts.com/css/pokemon-solid");
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .body {
   background-color: #fafafa;
   margin: 0;
@@ -11,30 +16,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.pokemon-sprite {
-  /* image-rendering: pixelated; */
-  width: 130px;
-  z-index: 1;
-}
-
-.loading-sprite {
-  width: 5%;
-}
-
-.type-badge {
-  color: white;
-  padding: 1px 7px;
-  border-radius: 10px;
-  border: 1px solid black;
-  margin: 0 4px;
-}
-
 .pokemon-list {
   list-style-type: none;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 0 40px;
+  margin: 20px 0;
 }
 
 .pokemon-card {
@@ -68,6 +57,17 @@
   right: -85px;
 }
 
+.sprite-container {
+  width: 130px;
+  height: 130px;
+  z-index: 1;
+}
+
+.pokemon-sprite {
+  /* image-rendering: pixelated; */
+  width: 130px;
+}
+
 .pokemon-card h3 {
   font-family: "Pokemon Solid", sans-serif;
   font-size: 1.6rem;
@@ -75,4 +75,17 @@
   margin-bottom: 0;
   color: #ffcb05;
   text-shadow: 0 0 10px #003a70, 0 0 10px #003a70;
+  margin-top: 25px;
+}
+
+.type-list {
+  margin-top: 15px;
+}
+
+.type-badge {
+  color: white;
+  padding: 1px 7px;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 0 4px;
 }

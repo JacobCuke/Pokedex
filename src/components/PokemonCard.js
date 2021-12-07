@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { getPokemonDetails } from "./Api.js";
-import loadingWheel from "../assets/img/loading-wheel.png";
 import pokeballIcon from "../assets/img/pokeball-icon3.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const TYPE_COLORS = {
   normal: "#a8a77a",
@@ -26,7 +27,6 @@ const TYPE_COLORS = {
 };
 
 // Secondary colors for Pokemon with one type, to make the gradient more appealing
-// Only up to water complete
 const SECONDARY_COLORS = {
   normal: "#d7d6ab",
   fire: "#d12929",
@@ -65,7 +65,7 @@ const PokemonCard = ({ pokemon }) => {
   const typeColorGradient =
     pokemonDetails !== undefined
       ? getTypeColorGradient(pokemonDetails.types)
-      : ["white", "white"];
+      : ["#858585", "#383838"];
 
   return (
     <li>
@@ -77,12 +77,15 @@ const PokemonCard = ({ pokemon }) => {
       >
         {loading ? (
           <>
-            <img
-              className="loading-sprite"
-              src={loadingWheel}
-              alt="loading wheel"
-            />
-            <p>Loading Pokemon data...</p>
+            <div className="pokeball-icon-container">
+              <img
+                className="pokeball-icon"
+                src={pokeballIcon}
+                alt="pokeball icon"
+              />
+            </div>
+            <div className="sprite-container"></div>
+            <h3>Loading...</h3>
           </>
         ) : (
           <>
@@ -93,13 +96,16 @@ const PokemonCard = ({ pokemon }) => {
                 alt="pokeball icon"
               />
             </div>
-            <img
-              className="pokemon-sprite"
-              src={
-                pokemonDetails.sprites.other["official-artwork"].front_default
-              }
-              alt={pokemonDetails.name}
-            />
+            <div className="sprite-container">
+              <LazyLoadImage
+                className="pokemon-sprite"
+                src={
+                  pokemonDetails.sprites.other["official-artwork"].front_default
+                }
+                alt={pokemonDetails.name}
+                effect="blur"
+              />
+            </div>
             <h3>
               {pokemonDetails.name
                 .toLowerCase()
@@ -114,7 +120,7 @@ const PokemonCard = ({ pokemon }) => {
                 })
                 .join(" ")}
             </h3>
-            <p>
+            <div className="type-list">
               {pokemonDetails.types.map((type) => (
                 <span
                   key={type.slot}
@@ -125,7 +131,7 @@ const PokemonCard = ({ pokemon }) => {
                     type.type.name.slice(1)}
                 </span>
               ))}
-            </p>
+            </div>
           </>
         )}
       </article>
@@ -146,11 +152,5 @@ const getTypeColorGradient = (typesArray) => {
     ];
   }
 };
-
-// const getPokemonData = async () => {
-//   const response = await axios.get(pokemon.url);
-//   setPokemonDetails(response.data);
-//   setLoading(false);
-// };
 
 export default PokemonCard;
