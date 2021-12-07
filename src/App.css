@@ -73,6 +73,6 @@
   font-size: 1.6rem;
   font-weight: 400;
   margin-bottom: 0;
-  color: #003a70;
-  text-shadow: 0 0 5px #ffcb05, 0 0 5px #ffcb05;
+  color: #ffcb05;
+  text-shadow: 0 0 10px #003a70, 0 0 10px #003a70;
 }
