@@ -132,14 +132,19 @@ body {
   margin-top: 25px;
 }
 
+.pokemon-card h3.japanese-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
 .type-list {
   margin-top: 15px;
 }
 
 .type-badge {
   color: white;
-  padding: 1px 7px;
-  border-radius: 10px;
+  padding: 2px 7px;
+  border-radius: 15px;
   border: 1px solid black;
   margin: 0 4px;
 }

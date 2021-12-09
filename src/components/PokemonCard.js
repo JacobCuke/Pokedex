@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
-import { getPokemonDetails } from "./Api.js";
+import { getPokemonDetails, getJapaneseName } from "./Api.js";
 import pokeballIcon from "../assets/img/pokeball-icon3.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -52,11 +52,16 @@ const PokemonCard = ({ pokemon }) => {
   const [pokemonDetails, setPokemonDetails] = useState();
   const [loading, setLoading] = useState(true);
 
+  // TODO: make language a state variable that can be toggled
+  let useJapanese = false;
+
   useEffect(() => {
     setLoading(true);
     getPokemonDetails(pokemon.url).then((data) => {
-      setPokemonDetails(data);
-      setLoading(false);
+      getJapaneseName(data.id).then((name) => {
+        setPokemonDetails({ ...data, japaneseName: name });
+        setLoading(false);
+      });
     });
 
     return () => setPokemonDetails(undefined);
@@ -106,19 +111,21 @@ const PokemonCard = ({ pokemon }) => {
                 effect="blur"
               />
             </div>
-            <h3>
-              {pokemonDetails.name
-                .toLowerCase()
-                .split("-")
-                .map((s) => {
-                  if (s === "m") {
-                    return "♂";
-                  } else if (s === "f") {
-                    return "♀";
-                  }
-                  return s.charAt(0).toUpperCase() + s.substring(1);
-                })
-                .join(" ")}
+            <h3 className={useJapanese && "japanese-text"}>
+              {useJapanese
+                ? pokemonDetails.japaneseName
+                : pokemonDetails.name
+                    .toLowerCase()
+                    .split("-")
+                    .map((s) => {
+                      if (s === "m") {
+                        return "♂";
+                      } else if (s === "f") {
+                        return "♀";
+                      }
+                      return s.charAt(0).toUpperCase() + s.substring(1);
+                    })
+                    .join(" ")}
             </h3>
             <div className="type-list">
               {pokemonDetails.types.map((type) => (

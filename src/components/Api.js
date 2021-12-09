@@ -22,4 +22,11 @@ const getPokemonIdFromUrl = (url) => {
   return pokemonId;
 };
 
-export { getPokemonList, getPokemonDetails };
+const getJapaneseName = async (id) => {
+  const response = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon-species/${id}`
+  );
+  return response.data.names[0].name;
+};
+
+export { getPokemonList, getPokemonDetails, getJapaneseName };
