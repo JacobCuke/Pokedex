@@ -44,10 +44,16 @@ function App() {
 
   return (
     <>
+      <Pagination
+        goToNextPage={nextPageUrl ? goToNextPage : null}
+        goToPreviousPage={previousPageUrl ? goToPreviousPage : null}
+        position="top"
+      />
       <PokemonList pokemonList={pokemonList} />
       <Pagination
         goToNextPage={nextPageUrl ? goToNextPage : null}
         goToPreviousPage={previousPageUrl ? goToPreviousPage : null}
+        position="bottom"
       />
     </>
   );

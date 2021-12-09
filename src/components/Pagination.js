@@ -1,8 +1,13 @@
-const Pagination = ({ goToNextPage, goToPreviousPage }) => {
+const Pagination = ({ goToNextPage, goToPreviousPage, position }) => {
   return (
-    <div>
-      {goToPreviousPage && <button onClick={goToPreviousPage}>Previous</button>}
-      {goToNextPage && <button onClick={goToNextPage}>Next</button>}
+    <div
+      className="page-selector"
+      style={
+        position === "top" ? { marginTop: "25px" } : { marginBottom: "25px" }
+      }
+    >
+      {goToPreviousPage && <button onClick={goToPreviousPage}>&#x276E;</button>}
+      {goToNextPage && <button onClick={goToNextPage}>&#x276F;</button>}
     </div>
   );
 };
