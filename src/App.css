@@ -1,12 +1,21 @@
 @import url("http://fonts.cdnfonts.com/css/pokemon-solid");
 
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
-.body {
-  background-color: #fafafa;
+body {
+  background-color: #b9b9b9;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -14,6 +23,29 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.loading-screen img {
+  max-width: 200px;
+  max-height: 200px;
+  animation: rotation 1.5s infinite linear;
+}
+
+.loading-screen h1 {
+  font-family: "Pokemon Solid", sans-serif;
+  font-weight: 400;
+  color: #ffcb05;
+  text-shadow: 0 0 10px #003a70, 0 0 10px #003a70;
+  margin-top: 2rem;
 }
 
 .pokemon-list {
