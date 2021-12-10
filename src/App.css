@@ -32,6 +32,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bg-image-container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url("./assets/img/seamless-galaxy.jpg");
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
 .loading-screen {
   display: flex;
   flex-direction: column;
@@ -76,6 +91,12 @@ body {
 .page-selector button:hover {
   transform: scale(1.1);
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pokemon-list {
@@ -170,4 +191,24 @@ body {
   border-radius: 15px;
   border: 1px solid black;
   margin: 0 4px;
+}
+
+.load-more {
+  font-size: 1.25rem;
+  padding: 15px 200px;
+  margin-top: 30px;
+  margin-bottom: 150px;
+  border-radius: 1.6rem;
+  background-color: transparent;
+  color: #9af7f2;
+  font-weight: 700;
+  text-shadow: 0 0 10px #9af7f2, 0 0 10px #9af7f2;
+  box-shadow: 0 0 5px 1px rgb(154 247 242 / 60%);
+  border: 2px solid rgba(154, 247, 242, 0.8);
+  cursor: pointer;
+}
+
+.load-more:hover {
+  color: black;
+  background-color: #9af7f2;
 }

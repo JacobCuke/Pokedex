@@ -11,7 +11,7 @@ const PokemonList = () => {
   useEffect(() => {
     const getAllPokemonDetails = async () => {
       const pokemonList = await getPokemonList(
-        "https://pokeapi.co/api/v2/pokemon?limit=898"
+        "https://pokeapi.co/api/v2/pokemon?limit=100"
       );
       setAllPokemonDetails(
         await Promise.all(
@@ -44,7 +44,9 @@ const PokemonList = () => {
           <PokemonCard key={pokemon.id} pokemonDetails={pokemon} />
         ))}
       </ul>
-      <button onClick={loadMorePokemon}>Load More</button>
+      <button className="load-more" onClick={loadMorePokemon}>
+        Load more Pokémon
+      </button>
     </div>
   );
 };
