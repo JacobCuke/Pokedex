@@ -7,7 +7,7 @@ const getPokemonList = async (url) => {
     return { id: getPokemonIdFromUrl(pokemon.url), ...pokemon };
   });
 
-  return response.data;
+  return response.data.results;
 };
 
 const getPokemonDetails = async (url) => {
