@@ -94,6 +94,9 @@ const PokemonCard = ({ pokemon }) => {
           </>
         ) : (
           <>
+            <div className="pokemon-id">
+              <h4>{"#" + ("00" + pokemonDetails.id).slice(-3)}</h4>
+            </div>
             <div className="pokeball-icon-container">
               <img
                 className="pokeball-icon"

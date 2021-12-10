@@ -89,22 +89,36 @@ body {
 }
 
 .pokemon-card {
-  background-color: pink;
   border: 1px solid black;
-
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 200px;
-  height: 230px;
+  height: 260px;
   padding: 1.5rem 0;
   margin: 2rem;
   transition: all 0.2s ease-in-out;
+  box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 .pokemon-card:hover {
   transform: scale(1.1);
+}
+
+.pokemon-id {
+  font-family: "Pokemon Solid", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #ffcb05;
+  text-shadow: 0 0 10px #003a70, 0 0 10px #003a70;
+  position: relative;
+}
+
+.pokemon-id h4 {
+  position: absolute;
+  top: -8px;
+  left: -82px;
 }
 
 .pokeball-icon-container {
@@ -115,7 +129,7 @@ body {
   position: absolute;
   width: 170px;
   opacity: 0.5;
-  top: -24px;
+  top: 12px;
   right: -85px;
 }
 
@@ -123,6 +137,7 @@ body {
   width: 130px;
   height: 130px;
   z-index: 1;
+  margin-top: 34px;
 }
 
 .pokemon-sprite {
@@ -134,9 +149,9 @@ body {
   font-family: "Pokemon Solid", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
-  margin-bottom: 0;
   color: #ffcb05;
   text-shadow: 0 0 10px #003a70, 0 0 10px #003a70;
+  margin-bottom: 0;
   margin-top: 25px;
 }
 
