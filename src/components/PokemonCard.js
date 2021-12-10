@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { getPokemonDetails, getJapaneseName } from "./Api.js";
-import pokeballIcon from "../assets/img/pokeball-icon3.png";
+import pokeballIcon from "../assets/img/pokeball-icon.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
@@ -111,7 +111,7 @@ const PokemonCard = ({ pokemon }) => {
                 effect="blur"
               />
             </div>
-            <h3 className={useJapanese && "japanese-text"}>
+            <h3 className={useJapanese ? "japanese-text" : undefined}>
               {useJapanese
                 ? pokemonDetails.japaneseName
                 : pokemonDetails.name

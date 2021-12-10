@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PokemonList from "./components/PokemonList";
 import Pagination from "./components/Pagination";
 import { getPokemonList } from "./components/Api.js";
-import loadingIcon from "./assets/img/pokeball-icon2.png";
+import loadingIcon from "./assets/img/pokeball-loading-icon.png";
 import "./App.css";
 
 function App() {
