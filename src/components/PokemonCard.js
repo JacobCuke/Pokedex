@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
 // import { getJapaneseName } from "./Api.js";
 import pokeballIcon from "../assets/img/pokeball-icon.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -49,19 +47,10 @@ const SECONDARY_COLORS = {
 };
 
 const PokemonCard = ({ pokemonDetails }) => {
-  const [loading, setLoading] = useState(true);
-
   // TODO: make language a state variable that can be toggled
   let useJapanese = false;
 
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-
-  const typeColorGradient =
-    pokemonDetails !== undefined
-      ? getTypeColorGradient(pokemonDetails.types)
-      : ["#858585", "#383838"];
+  const typeColorGradient = getTypeColorGradient(pokemonDetails.types);
 
   return (
     <li>
@@ -71,70 +60,56 @@ const PokemonCard = ({ pokemonDetails }) => {
           background: `radial-gradient(circle at top, ${typeColorGradient[0]} 35%, ${typeColorGradient[1]}) 100%`,
         }}
       >
-        {loading ? (
-          <>
-            <div className="pokeball-icon-container">
-              <img
-                className="pokeball-icon"
-                src={pokeballIcon}
-                alt="pokeball icon"
-              />
-            </div>
-            <div className="sprite-container"></div>
-            <h3>Loading...</h3>
-          </>
-        ) : (
-          <>
-            <div className="pokemon-id">
-              <h4>{"#" + ("00" + pokemonDetails.id).slice(-3)}</h4>
-            </div>
-            <div className="pokeball-icon-container">
-              <img
-                className="pokeball-icon"
-                src={pokeballIcon}
-                alt="pokeball icon"
-              />
-            </div>
-            <div className="sprite-container">
-              <LazyLoadImage
-                className="pokemon-sprite"
-                src={
-                  pokemonDetails.sprites.other["official-artwork"].front_default
-                }
-                alt={pokemonDetails.name}
-                effect="blur"
-              />
-            </div>
-            <h3 className={useJapanese ? "japanese-text" : undefined}>
-              {useJapanese
-                ? pokemonDetails.japaneseName
-                : pokemonDetails.name
-                    .toLowerCase()
-                    .split("-")
-                    .map((s) => {
-                      if (s === "m") {
-                        return "♂";
-                      } else if (s === "f") {
-                        return "♀";
-                      }
-                      return s.charAt(0).toUpperCase() + s.substring(1);
-                    })
-                    .join(" ")}
-            </h3>
-            <div className="type-list">
-              {pokemonDetails.types.map((type) => (
-                <span
-                  key={type.slot}
-                  className="type-badge"
-                  style={{ backgroundColor: `${TYPE_COLORS[type.type.name]}` }}
-                >
-                  {type.type.name.charAt(0).toUpperCase() +
-                    type.type.name.slice(1)}
-                </span>
-              ))}
-            </div>
-          </>
-        )}
+        <>
+          <div className="pokemon-id">
+            <h4>{"#" + ("00" + pokemonDetails.id).slice(-3)}</h4>
+          </div>
+          <div className="pokeball-icon-container">
+            <img
+              className="pokeball-icon"
+              src={pokeballIcon}
+              alt="pokeball icon"
+            />
+          </div>
+          <div className="sprite-container">
+            <LazyLoadImage
+              className="pokemon-sprite"
+              src={
+                pokemonDetails.sprites.other["official-artwork"].front_default
+              }
+              alt={pokemonDetails.name}
+              effect="blur"
+            />
+          </div>
+          <h3 className={useJapanese ? "japanese-text" : undefined}>
+            {useJapanese
+              ? pokemonDetails.japaneseName
+              : pokemonDetails.name
+                  .toLowerCase()
+                  .split("-")
+                  .map((s) => {
+                    if (s === "m") {
+                      return "♂";
+                    } else if (s === "f") {
+                      return "♀";
+                    }
+                    return s.charAt(0).toUpperCase() + s.substring(1);
+                  })
+                  .join(" ")}
+          </h3>
+          <div className="type-list">
+            {pokemonDetails.types.map((type) => (
+              <span
+                key={type.slot}
+                className="type-badge"
+                style={{ backgroundColor: `${TYPE_COLORS[type.type.name]}` }}
+              >
+                {type.type.name.charAt(0).toUpperCase() +
+                  type.type.name.slice(1)}
+              </span>
+            ))}
+          </div>
+        </>
       </article>
     </li>
   );
