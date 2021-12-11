@@ -1,6 +1,6 @@
 // import { getJapaneseName } from "./Api.js";
 import pokeballIcon from "../assets/img/pokeball-icon.png";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+// import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const TYPE_COLORS = {
@@ -72,7 +72,7 @@ const PokemonCard = ({ pokemonDetails }) => {
             />
           </div>
           <div className="sprite-container">
-            <LazyLoadImage
+            <img
               className="pokemon-sprite"
               src={
                 pokemonDetails.sprites.other["official-artwork"].front_default
