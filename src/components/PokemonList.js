@@ -6,14 +6,32 @@ import loadingIcon from "../assets/img/pokeball-loading-icon.png";
 const PokemonList = () => {
   const [numPokemon, setNumPokemon] = useState(20);
   const [loading, setLoading] = useState(true);
-  const [allPokemonLoaded, setAllPokemonLoaded] = useState(false);
+  // const [allPokemonLoaded, setAllPokemonLoaded] = useState(false);
   const [allPokemonDetails, setAllPokemonDetails] = useState([]);
 
   // Load just the first 20 Pokemon to ensure a quick load time
+  // useEffect(() => {
+  //   const getInitialPokemonDetails = async () => {
+  //     const pokemonList = await getPokemonList(
+  //       "https://pokeapi.co/api/v2/pokemon?limit=20"
+  //     );
+
+  //     setAllPokemonDetails(
+  //       await Promise.all(
+  //         pokemonList.map((pokemon) => getPokemonDetails(pokemon.url))
+  //       )
+  //     );
+
+  //     setLoading(false);
+  //   };
+
+  //   getInitialPokemonDetails();
+  // }, []);
+
   useEffect(() => {
-    const getInitialPokemonDetails = async () => {
+    const getAllPokemonDetails = async () => {
       const pokemonList = await getPokemonList(
-        "https://pokeapi.co/api/v2/pokemon?limit=20"
+        "https://pokeapi.co/api/v2/pokemon?limit=898"
       );
 
       setAllPokemonDetails(
@@ -25,29 +43,10 @@ const PokemonList = () => {
       setLoading(false);
     };
 
-    getInitialPokemonDetails();
+    // if (loading === false) {
+    getAllPokemonDetails();
+    // }
   }, []);
-
-  // Once initial load is complete, load the rest of the Pokemon
-  useEffect(() => {
-    const getRemainingPokemonDetails = async () => {
-      const pokemonList = await getPokemonList(
-        "https://pokeapi.co/api/v2/pokemon?limit=898"
-      );
-
-      setAllPokemonDetails(
-        await Promise.all(
-          pokemonList.map((pokemon) => getPokemonDetails(pokemon.url))
-        )
-      );
-
-      setAllPokemonLoaded(true);
-    };
-
-    if (loading === false) {
-      getRemainingPokemonDetails();
-    }
-  }, [loading]);
 
   const loadMorePokemon = () => {
     setNumPokemon(numPokemon + 20);
@@ -69,7 +68,7 @@ const PokemonList = () => {
         ))}
       </ul>
       <button className="load-more" onClick={loadMorePokemon}>
-        {allPokemonLoaded ? "Load more Pokémon" : "Loading..."}
+        Load more Pokémon
       </button>
     </div>
   );
