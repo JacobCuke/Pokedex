@@ -1,7 +1,7 @@
 import PokemonCard from "./PokemonCard";
 import { useState, useEffect } from "react";
 import { getPokemonList, getPokemonDetails } from "./Api";
-import loadingIcon from "../assets/img/pokeball-loading-icon.png";
+import loadingIcon from "../assets/img/pikachu-running.gif";
 
 const PokemonList = () => {
   const [numPokemon, setNumPokemon] = useState(20);

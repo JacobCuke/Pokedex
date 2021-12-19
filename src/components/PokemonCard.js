@@ -1,4 +1,3 @@
-// import { getJapaneseName } from "./Api.js";
 import pokeballIcon from "../assets/img/pokeball-icon.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -47,9 +46,6 @@ const SECONDARY_COLORS = {
 };
 
 const PokemonCard = ({ pokemonDetails }) => {
-  // TODO: make language a state variable that can be toggled
-  let useJapanese = false;
-
   const typeColorGradient = getTypeColorGradient(pokemonDetails.types);
 
   return (
@@ -81,21 +77,19 @@ const PokemonCard = ({ pokemonDetails }) => {
               effect="blur"
             />
           </div>
-          <h3 className={useJapanese ? "japanese-text" : undefined}>
-            {useJapanese
-              ? pokemonDetails.japaneseName
-              : pokemonDetails.name
-                  .toLowerCase()
-                  .split("-")
-                  .map((s) => {
-                    if (s === "m") {
-                      return "♂";
-                    } else if (s === "f") {
-                      return "♀";
-                    }
-                    return s.charAt(0).toUpperCase() + s.substring(1);
-                  })
-                  .join(" ")}
+          <h3>
+            {pokemonDetails.name
+              .toLowerCase()
+              .split("-")
+              .map((s) => {
+                if (s === "m") {
+                  return "♂";
+                } else if (s === "f") {
+                  return "♀";
+                }
+                return s.charAt(0).toUpperCase() + s.substring(1);
+              })
+              .join(" ")}
           </h3>
           <div className="type-list">
             {pokemonDetails.types.map((type) => (
