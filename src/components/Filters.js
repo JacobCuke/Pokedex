@@ -1,8 +1,8 @@
-const Filters = ({ filters, updateFilters }) => {
-  const REGIONS = ["all", "kanto", "johto", "hoenn"];
-  const TYPES = ["all", "fire", "grass", "water"];
-  const SORT_BY = ["id", "name"];
+const REGIONS = ["all", "kanto", "johto", "hoenn"];
+const TYPES = ["all", "fire", "grass", "water"];
+const SORT_BY = ["id", "name"];
 
+const Filters = ({ filters, updateFilters }) => {
   return (
     <div>
       <select

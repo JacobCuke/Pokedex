@@ -4,11 +4,28 @@ import { getPokemonList, getPokemonDetails } from "./Api";
 import loadingIcon from "../assets/img/pikachu-running.gif";
 import Filters from "./Filters";
 
+const POKEMON_PER_LOAD = 20;
+const REGIONS = {
+  all: {
+    start: 0,
+    limit: 898,
+  },
+  kanto: {
+    start: 0,
+    limit: 151,
+  },
+  johto: {
+    start: 151,
+    limit: 100,
+  },
+};
+
 const PokemonList = () => {
   const [numPokemon, setNumPokemon] = useState(20);
   const [loading, setLoading] = useState(true);
   // const [allPokemonLoaded, setAllPokemonLoaded] = useState(false);
   const [allPokemonDetails, setAllPokemonDetails] = useState([]);
+  const [displayedPokemon, setDisplayedPokemon] = useState([]);
   const [filters, setFilters] = useState({
     region: "all",
     type: "all",
@@ -40,12 +57,12 @@ const PokemonList = () => {
         "https://pokeapi.co/api/v2/pokemon?limit=898"
       );
 
-      setAllPokemonDetails(
-        await Promise.all(
-          pokemonList.map((pokemon) => getPokemonDetails(pokemon.url))
-        )
+      const allResponses = await Promise.all(
+        pokemonList.map((pokemon) => getPokemonDetails(pokemon.url))
       );
 
+      setAllPokemonDetails(allResponses);
+      setDisplayedPokemon(allResponses);
       setLoading(false);
     };
 
@@ -55,15 +72,19 @@ const PokemonList = () => {
   }, []);
 
   useEffect(() => {
-    console.log(filters);
-  }, [filters]);
+    const start = REGIONS[filters.region].start;
+    const limit = REGIONS[filters.region].limit;
+    const filteredPokemon = allPokemonDetails.slice(start, start + limit);
+    setDisplayedPokemon(filteredPokemon);
+    setNumPokemon(POKEMON_PER_LOAD);
+  }, [allPokemonDetails, filters]);
 
   const updateFilters = (newFilters) => {
     setFilters({ ...filters, ...newFilters });
   };
 
   const loadMorePokemon = () => {
-    setNumPokemon(numPokemon + 20);
+    setNumPokemon(numPokemon + POKEMON_PER_LOAD);
   };
 
   if (loading)
@@ -79,7 +100,7 @@ const PokemonList = () => {
       <Filters filters={filters} updateFilters={updateFilters} />
       <div className="list-container">
         <ul className="pokemon-list">
-          {allPokemonDetails.slice(0, numPokemon).map((pokemon) => (
+          {displayedPokemon.slice(0, numPokemon).map((pokemon) => (
             <PokemonCard key={pokemon.id} pokemonDetails={pokemon} />
           ))}
         </ul>
