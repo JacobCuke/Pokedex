@@ -2,12 +2,18 @@ import PokemonCard from "./PokemonCard";
 import { useState, useEffect } from "react";
 import { getPokemonList, getPokemonDetails } from "./Api";
 import loadingIcon from "../assets/img/pikachu-running.gif";
+import Filters from "./Filters";
 
 const PokemonList = () => {
   const [numPokemon, setNumPokemon] = useState(20);
   const [loading, setLoading] = useState(true);
   // const [allPokemonLoaded, setAllPokemonLoaded] = useState(false);
   const [allPokemonDetails, setAllPokemonDetails] = useState([]);
+  const [filters, setFilters] = useState({
+    region: "all",
+    type: "all",
+    sortBy: "id",
+  });
 
   // Load just the first 20 Pokemon to ensure a quick load time
   // useEffect(() => {
@@ -48,6 +54,14 @@ const PokemonList = () => {
     // }
   }, []);
 
+  useEffect(() => {
+    console.log(filters);
+  }, [filters]);
+
+  const updateFilters = (newFilters) => {
+    setFilters({ ...filters, ...newFilters });
+  };
+
   const loadMorePokemon = () => {
     setNumPokemon(numPokemon + 20);
   };
@@ -61,16 +75,19 @@ const PokemonList = () => {
     );
 
   return (
-    <div className="list-container">
-      <ul className="pokemon-list">
-        {allPokemonDetails.slice(0, numPokemon).map((pokemon) => (
-          <PokemonCard key={pokemon.id} pokemonDetails={pokemon} />
-        ))}
-      </ul>
-      <button className="load-more" onClick={loadMorePokemon}>
-        Load more Pokémon
-      </button>
-    </div>
+    <>
+      <Filters filters={filters} updateFilters={updateFilters} />
+      <div className="list-container">
+        <ul className="pokemon-list">
+          {allPokemonDetails.slice(0, numPokemon).map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemonDetails={pokemon} />
+          ))}
+        </ul>
+        <button className="load-more" onClick={loadMorePokemon}>
+          Load more Pokémon
+        </button>
+      </div>
+    </>
   );
 };
 
