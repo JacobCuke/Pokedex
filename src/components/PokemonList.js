@@ -128,9 +128,11 @@ const PokemonList = () => {
             <PokemonCard key={pokemon.id} pokemonDetails={pokemon} />
           ))}
         </ul>
-        <button className="load-more" onClick={loadMorePokemon}>
-          Load more Pokémon
-        </button>
+        {numPokemon < REGIONS[filters.region].limit && (
+          <button className="load-more" onClick={loadMorePokemon}>
+            Load more Pokémon
+          </button>
+        )}
       </div>
     </>
   );
