@@ -1,6 +1,7 @@
 import pokeballIcon from "../assets/img/pokeball-icon.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { formatPokemonName } from "./Api";
 
 const TYPE_COLORS = {
   normal: "#a8a77a",
@@ -77,20 +78,7 @@ const PokemonCard = ({ pokemonDetails }) => {
               effect="blur"
             />
           </div>
-          <h3>
-            {pokemonDetails.name
-              .toLowerCase()
-              .split("-")
-              .map((s) => {
-                if (s === "m") {
-                  return "♂";
-                } else if (s === "f") {
-                  return "♀";
-                }
-                return s.charAt(0).toUpperCase() + s.substring(1);
-              })
-              .join(" ")}
-          </h3>
+          <h3>{formatPokemonName(pokemonDetails.species.name)}</h3>
           <div className="type-list">
             {pokemonDetails.types.map((type) => (
               <span

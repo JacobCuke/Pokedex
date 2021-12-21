@@ -22,6 +22,22 @@ const getPokemonIdFromUrl = (url) => {
   return pokemonId;
 };
 
+const formatPokemonName = (name) => {
+  // Capitalize each word and change gender letters to the apprpriate symbol
+  return name
+    .toLowerCase()
+    .split("-")
+    .map((s) => {
+      if (s === "m") {
+        return "♂";
+      } else if (s === "f") {
+        return "♀";
+      }
+      return s.charAt(0).toUpperCase() + s.substring(1);
+    })
+    .join(" ");
+};
+
 const getJapaneseName = async (id) => {
   const response = await axios.get(
     `https://pokeapi.co/api/v2/pokemon-species/${id}`
@@ -29,4 +45,9 @@ const getJapaneseName = async (id) => {
   return response.data.names[0].name;
 };
 
-export { getPokemonList, getPokemonDetails, getJapaneseName };
+export {
+  getPokemonList,
+  getPokemonDetails,
+  getJapaneseName,
+  formatPokemonName,
+};
