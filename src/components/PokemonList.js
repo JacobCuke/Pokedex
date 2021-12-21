@@ -109,7 +109,12 @@ const PokemonList = () => {
           .includes(filters.type);
       });
     }
-    // Sort
+    // Sort By
+    if (filters.sortBy === "name") {
+      filteredPokemon.sort((p1, p2) =>
+        p1.species.name.localeCompare(p2.species.name)
+      );
+    }
 
     setDisplayedPokemon(filteredPokemon);
     setNumPokemon(POKEMON_PER_LOAD);
