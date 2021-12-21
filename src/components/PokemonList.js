@@ -47,7 +47,6 @@ const REGIONS = {
 const PokemonList = () => {
   const [numPokemon, setNumPokemon] = useState(20);
   const [loading, setLoading] = useState(true);
-  // const [allPokemonLoaded, setAllPokemonLoaded] = useState(false);
   const [allPokemonDetails, setAllPokemonDetails] = useState([]);
   const [displayedPokemon, setDisplayedPokemon] = useState([]);
   const [filters, setFilters] = useState({
@@ -55,25 +54,6 @@ const PokemonList = () => {
     type: "all",
     sortBy: "id",
   });
-
-  // Load just the first 20 Pokemon to ensure a quick load time
-  // useEffect(() => {
-  //   const getInitialPokemonDetails = async () => {
-  //     const pokemonList = await getPokemonList(
-  //       "https://pokeapi.co/api/v2/pokemon?limit=20"
-  //     );
-
-  //     setAllPokemonDetails(
-  //       await Promise.all(
-  //         pokemonList.map((pokemon) => getPokemonDetails(pokemon.url))
-  //       )
-  //     );
-
-  //     setLoading(false);
-  //   };
-
-  //   getInitialPokemonDetails();
-  // }, []);
 
   useEffect(() => {
     const getAllPokemonDetails = async () => {
@@ -90,9 +70,7 @@ const PokemonList = () => {
       setLoading(false);
     };
 
-    // if (loading === false) {
     getAllPokemonDetails();
-    // }
   }, []);
 
   useEffect(() => {
