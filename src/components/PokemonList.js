@@ -96,9 +96,21 @@ const PokemonList = () => {
   }, []);
 
   useEffect(() => {
+    // Region
     const start = REGIONS[filters.region].start;
     const limit = REGIONS[filters.region].limit;
-    const filteredPokemon = allPokemonDetails.slice(start, start + limit);
+    let filteredPokemon = allPokemonDetails.slice(start, start + limit);
+
+    // Type
+    if (filters.type !== "all") {
+      filteredPokemon = filteredPokemon.filter((pokemon) => {
+        return pokemon.types
+          .map((type) => type.type.name)
+          .includes(filters.type);
+      });
+    }
+    // Sort
+
     setDisplayedPokemon(filteredPokemon);
     setNumPokemon(POKEMON_PER_LOAD);
   }, [allPokemonDetails, filters]);
@@ -128,7 +140,7 @@ const PokemonList = () => {
             <PokemonCard key={pokemon.id} pokemonDetails={pokemon} />
           ))}
         </ul>
-        {numPokemon < REGIONS[filters.region].limit && (
+        {numPokemon < displayedPokemon.length && (
           <button className="load-more" onClick={loadMorePokemon}>
             Load more Pokémon
           </button>

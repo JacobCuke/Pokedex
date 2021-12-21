@@ -9,7 +9,27 @@ const REGIONS = [
   "alola",
   "galar",
 ];
-const TYPES = ["all", "fire", "grass", "water"];
+const TYPES = [
+  "all",
+  "normal",
+  "fire",
+  "water",
+  "electric",
+  "grass",
+  "ice",
+  "fighting",
+  "poison",
+  "ground",
+  "flying",
+  "psychic",
+  "bug",
+  "rock",
+  "ghost",
+  "dragon",
+  "dark",
+  "steel",
+  "fairy",
+];
 const SORT_BY = ["id", "name"];
 
 const Filters = ({ filters, updateFilters }) => {
