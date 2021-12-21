@@ -1,4 +1,14 @@
-const REGIONS = ["all", "kanto", "johto", "hoenn"];
+const REGIONS = [
+  "all",
+  "kanto",
+  "johto",
+  "hoenn",
+  "sinnoh",
+  "unova",
+  "kalos",
+  "alola",
+  "galar",
+];
 const TYPES = ["all", "fire", "grass", "water"];
 const SORT_BY = ["id", "name"];
 

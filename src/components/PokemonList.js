@@ -18,6 +18,30 @@ const REGIONS = {
     start: 151,
     limit: 100,
   },
+  hoenn: {
+    start: 251,
+    limit: 135,
+  },
+  sinnoh: {
+    start: 386,
+    limit: 108,
+  },
+  unova: {
+    start: 494,
+    limit: 155,
+  },
+  kalos: {
+    start: 649,
+    limit: 72,
+  },
+  alola: {
+    start: 721,
+    limit: 88,
+  },
+  galar: {
+    start: 809,
+    limit: 89,
+  },
 };
 
 const PokemonList = () => {
