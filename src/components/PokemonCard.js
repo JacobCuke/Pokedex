@@ -2,49 +2,7 @@ import pokeballIcon from "../assets/img/pokeball-icon.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { formatPokemonName } from "./Api";
-
-const TYPE_COLORS = {
-  normal: "#a8a77a",
-  fire: "#ee8130",
-  water: "#6390f0",
-  electric: "#f7d02c",
-  grass: "#7ac74c",
-  ice: "#96d9d6",
-  fighting: "#c22e28",
-  poison: "#a33ea1",
-  ground: "#e2bf65",
-  flying: "#a98ff3",
-  psychic: "#f95587",
-  bug: "#a6b91a",
-  rock: "#b6a136",
-  ghost: "#735797",
-  dragon: "#6f35fC",
-  dark: "#705746",
-  steel: "#b7b7ce",
-  fairy: "#d685ad",
-};
-
-// Secondary colors for Pokemon with one type, to make the gradient more appealing
-const SECONDARY_COLORS = {
-  normal: "#d7d6ab",
-  fire: "#d12929",
-  water: "#185ceb",
-  electric: "#f3a800",
-  grass: "#b0e50e",
-  ice: "#5dfbe5",
-  fighting: "#d11313",
-  poison: "#6a3469",
-  ground: "#c3a200",
-  flying: "#b8a7e9",
-  psychic: "#ff004e",
-  bug: "#7a8b01",
-  rock: "#856f00",
-  ghost: "#6204db",
-  dragon: "#362f46",
-  dark: "#221a14",
-  steel: "#ebebed",
-  fairy: "#f1a2c9",
-};
+import { TYPE_COLORS, TYPE_SECONDARY_COLORS } from "../constants/constants";
 
 const PokemonCard = ({ pokemonDetails }) => {
   const typeColorGradient = getTypeColorGradient(pokemonDetails.types);
@@ -101,7 +59,7 @@ const getTypeColorGradient = (typesArray) => {
   if (typesArray.length === 1) {
     return [
       TYPE_COLORS[typesArray[0].type.name],
-      SECONDARY_COLORS[typesArray[0].type.name],
+      TYPE_SECONDARY_COLORS[typesArray[0].type.name],
     ];
   } else {
     return [

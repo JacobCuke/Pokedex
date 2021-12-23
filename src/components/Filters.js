@@ -1,36 +1,4 @@
-const REGIONS = [
-  "all",
-  "kanto",
-  "johto",
-  "hoenn",
-  "sinnoh",
-  "unova",
-  "kalos",
-  "alola",
-  "galar",
-];
-const TYPES = [
-  "all",
-  "normal",
-  "fire",
-  "water",
-  "electric",
-  "grass",
-  "ice",
-  "fighting",
-  "poison",
-  "ground",
-  "flying",
-  "psychic",
-  "bug",
-  "rock",
-  "ghost",
-  "dragon",
-  "dark",
-  "steel",
-  "fairy",
-];
-const SORT_BY = ["id", "name"];
+import { REGIONS, TYPES, SORT_BY } from "../constants/constants";
 
 const Filters = ({ filters, updateFilters }) => {
   return (
