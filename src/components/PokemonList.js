@@ -14,6 +14,7 @@ const PokemonList = () => {
     region: "all",
     type: "all",
     sortBy: "id",
+    searchTerm: "",
   });
 
   useEffect(() => {
@@ -35,20 +36,22 @@ const PokemonList = () => {
   }, []);
 
   useEffect(() => {
-    // Region
+    // Filter by Region, Type and Search Term
     const start = REGION_INFO[filters.region].start;
     const limit = REGION_INFO[filters.region].limit;
-    let filteredPokemon = allPokemonDetails.slice(start, start + limit);
-
-    // Type
-    if (filters.type !== "all") {
-      filteredPokemon = filteredPokemon.filter((pokemon) => {
-        return pokemon.types
-          .map((type) => type.type.name)
-          .includes(filters.type);
+    const filteredPokemon = allPokemonDetails
+      .slice(start, start + limit)
+      .filter((pokemon) => {
+        return (
+          filters.type === "all" ||
+          pokemon.types.map((type) => type.type.name).includes(filters.type)
+        );
+      })
+      .filter((pokemon) => {
+        return pokemon.species.name.toLowerCase().includes(filters.searchTerm);
       });
-    }
-    // Sort By
+
+    // Sort
     if (filters.sortBy === "name") {
       filteredPokemon.sort((p1, p2) =>
         p1.species.name.localeCompare(p2.species.name)

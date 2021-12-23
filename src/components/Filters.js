@@ -33,6 +33,10 @@ const Filters = ({ filters, updateFilters }) => {
           </option>
         ))}
       </select>
+      <input
+        type="text"
+        onChange={(e) => updateFilters({ searchTerm: e.target.value })}
+      />
     </div>
   );
 };
