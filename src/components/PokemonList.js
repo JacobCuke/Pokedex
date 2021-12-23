@@ -69,7 +69,7 @@ const PokemonList = () => {
 
   if (loading)
     return (
-      <div className="loading-screen">
+      <div className="loading-screen pokemon-text">
         <img src={loadingIcon} alt="loading icon" />
         <h1>Loading...</h1>
       </div>

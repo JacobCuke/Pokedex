@@ -16,7 +16,7 @@ const PokemonCard = ({ pokemonDetails }) => {
         }}
       >
         <>
-          <div className="pokemon-id">
+          <div className="pokemon-id pokemon-text">
             <h4>{"#" + ("00" + pokemonDetails.id).slice(-3)}</h4>
           </div>
           <div className="pokeball-icon-container">
@@ -36,7 +36,9 @@ const PokemonCard = ({ pokemonDetails }) => {
               effect="blur"
             />
           </div>
-          <h3>{formatPokemonName(pokemonDetails.species.name)}</h3>
+          <h3 className="pokemon-text">
+            {formatPokemonName(pokemonDetails.species.name)}
+          </h3>
           <div className="type-list">
             {pokemonDetails.types.map((type) => (
               <span
