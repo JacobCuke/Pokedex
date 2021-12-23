@@ -79,6 +79,11 @@ const PokemonList = () => {
     <>
       <Filters filters={filters} updateFilters={updateFilters} />
       <div className="list-container">
+        {displayedPokemon.length === 0 && (
+          <div className="no-results pokemon-text">
+            <h3>No Pokemon Found!</h3>
+          </div>
+        )}
         <ul className="pokemon-list">
           {displayedPokemon.slice(0, numPokemon).map((pokemon) => (
             <PokemonCard key={pokemon.id} pokemonDetails={pokemon} />

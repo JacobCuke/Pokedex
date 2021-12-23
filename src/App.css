@@ -113,6 +113,12 @@ body {
   align-items: center;
 }
 
+.pokemon-text {
+  font-family: "PokemonSolid", sans-serif;
+  color: #ffcb05;
+  text-shadow: 0 0 10px #003a70, 0 0 10px #003a70;
+}
+
 .pokemon-list {
   list-style-type: none;
   display: flex;
@@ -228,4 +234,8 @@ body {
 .load-more:hover {
   color: black;
   background-color: #9af7f2;
+}
+
+.no-results {
+  font-size: 2rem;
 }
