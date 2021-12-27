@@ -372,11 +372,10 @@ body {
   margin-top: 30px;
   margin-bottom: 150px;
   border-radius: 1.6rem;
-  background-color: #0410817a;
+  background-color: #003a70eb;
   color: #9af7f2;
   font-weight: 700;
-  text-shadow: 0 0 10px #9af7f2, 0 0 10px #9af7f2;
-  box-shadow: 0 0 5px 1px rgb(154 247 242 / 60%);
+  box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
   border: 2px solid rgba(154, 247, 242, 0.8);
   cursor: pointer;
   box-sizing: border-box;
@@ -384,8 +383,9 @@ body {
 }
 
 .load-more:hover {
-  color: black;
+  color: #003a70;
   background-color: #9af7f2;
+  border: 2px solid #003a70;
 }
 
 .no-results {
