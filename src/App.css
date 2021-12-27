@@ -65,6 +65,7 @@ body {
   font-family: "PokemonSolid", sans-serif;
   color: #ffcb05;
   text-shadow: 0 0 10px #003a70, 0 0 10px #003a70;
+  letter-spacing: 1px;
 }
 
 .loading-screen {
@@ -110,6 +111,13 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 } */
 
+.page-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 30px;
+  letter-spacing: 5px;
+}
+
 .filters-container {
   display: flex;
   justify-content: center;
@@ -126,7 +134,6 @@ body {
 
 .filter-item label {
   font-size: 1.3rem;
-  margin-top: 15px;
   margin-bottom: 8px;
 }
 

@@ -80,6 +80,9 @@ const PokemonList = () => {
 
   return (
     <>
+      <header className="pokemon-text page-heading">
+        <h1>Pokédex</h1>
+      </header>
       <Filters filters={filters} updateFilters={updateFilters} />
       <div className="list-container">
         {displayedPokemon.length === 0 && (
