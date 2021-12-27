@@ -1,6 +1,6 @@
 import PokemonCard from "./PokemonCard";
 import { useState, useEffect } from "react";
-import { getPokemonList, getPokemonDetails } from "./Api";
+import { getPokemonList, getPokemonDetails, formatPokemonName } from "./Api";
 import loadingIcon from "../assets/img/pikachu-running.gif";
 import Filters from "./Filters";
 import { POKEMON_PER_LOAD, REGION_INFO } from "../constants/constants";
@@ -35,8 +35,8 @@ const PokemonList = () => {
     getAllPokemonDetails();
   }, []);
 
+  // Filters
   useEffect(() => {
-    // Filter by Region, Type and Search Term
     const start = REGION_INFO[filters.region].start;
     const limit = REGION_INFO[filters.region].limit;
     const filteredPokemon = allPokemonDetails
@@ -48,7 +48,9 @@ const PokemonList = () => {
         );
       })
       .filter((pokemon) => {
-        return pokemon.species.name.toLowerCase().includes(filters.searchTerm);
+        return formatPokemonName(pokemon.species.name)
+          .toLowerCase()
+          .includes(filters.searchTerm.toLowerCase());
       });
 
     // Sort
