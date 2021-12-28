@@ -1,8 +1,25 @@
+import { useRef } from "react";
+
 const DetailModal = ({ toggleModal }) => {
+  const modalBackground = useRef();
+
+  const handleBackgroundClick = (e) => {
+    if (e.target === modalBackground.current) {
+      toggleModal();
+    }
+  };
+
   return (
-    <div className="modal-background">
+    <div
+      ref={modalBackground}
+      className="modal-background"
+      onClick={handleBackgroundClick}
+    >
       <div className="modal-container">
-        This is a modal <button onClick={toggleModal}>Close</button>
+        <h3>Lorem Ipsum</h3>
+        <button className="modal-close" onClick={toggleModal}>
+          &times;
+        </button>
       </div>
     </div>
   );
