@@ -252,6 +252,7 @@ body {
   margin: 2rem;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  cursor: pointer;
 }
 
 .pokemon-card:hover {
@@ -351,4 +352,25 @@ body {
 .no-results {
   font-size: 2rem;
   margin-top: 50px;
+}
+
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  height: 500px;
+  width: 60%;
+  background-color: #e3e3e3;
+  border-radius: 1rem;
+  padding: 15px;
 }

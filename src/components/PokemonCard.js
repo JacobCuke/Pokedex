@@ -4,7 +4,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { formatPokemonName } from "./Api";
 import { TYPE_COLORS, TYPE_SECONDARY_COLORS } from "../constants/constants";
 
-const PokemonCard = ({ pokemonDetails }) => {
+const PokemonCard = ({ pokemonDetails, toggleModal }) => {
   const typeColorGradient = getTypeColorGradient(pokemonDetails.types);
 
   return (
@@ -14,6 +14,7 @@ const PokemonCard = ({ pokemonDetails }) => {
         style={{
           background: `radial-gradient(circle at top, ${typeColorGradient[0]} 35%, ${typeColorGradient[1]}) 100%`,
         }}
+        onClick={toggleModal}
       >
         <>
           <div className="pokemon-id pokemon-text">

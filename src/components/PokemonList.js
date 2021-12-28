@@ -1,8 +1,9 @@
 import PokemonCard from "./PokemonCard";
+import DetailModal from "./DetailModal";
+import Filters from "./Filters";
 import { useState, useEffect } from "react";
 import { getPokemonList, getPokemonDetails, formatPokemonName } from "./Api";
 import loadingIcon from "../assets/img/pikachu-running.gif";
-import Filters from "./Filters";
 import { POKEMON_PER_LOAD, REGION_INFO } from "../constants/constants";
 
 const PokemonList = () => {
@@ -16,7 +17,9 @@ const PokemonList = () => {
     sortBy: "id",
     searchTerm: "",
   });
+  const [showDetailModal, setShowDetailModal] = useState(false);
 
+  // Load all Pokemon
   useEffect(() => {
     const getAllPokemonDetails = async () => {
       const pokemonList = await getPokemonList(
@@ -72,6 +75,10 @@ const PokemonList = () => {
     setNumPokemon(numPokemon + POKEMON_PER_LOAD);
   };
 
+  const toggleModal = () => {
+    setShowDetailModal((value) => !value);
+  };
+
   if (loading)
     return (
       <div className="loading-screen pokemon-text">
@@ -94,7 +101,11 @@ const PokemonList = () => {
         )}
         <ul className="pokemon-list">
           {displayedPokemon.slice(0, numPokemon).map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemonDetails={pokemon} />
+            <PokemonCard
+              key={pokemon.id}
+              pokemonDetails={pokemon}
+              toggleModal={toggleModal}
+            />
           ))}
         </ul>
         {numPokemon < displayedPokemon.length && (
@@ -103,6 +114,7 @@ const PokemonList = () => {
           </button>
         )}
       </div>
+      {showDetailModal && <DetailModal toggleModal={toggleModal} />}
     </>
   );
 };
