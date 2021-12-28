@@ -14,7 +14,7 @@ const PokemonCard = ({ pokemonDetails, toggleModal }) => {
         style={{
           background: `radial-gradient(circle at top, ${typeColorGradient[0]} 35%, ${typeColorGradient[1]}) 100%`,
         }}
-        onClick={toggleModal}
+        onClick={() => toggleModal(pokemonDetails)}
       >
         <>
           <div className="pokemon-id pokemon-text">

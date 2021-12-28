@@ -18,6 +18,7 @@ const PokemonList = () => {
     searchTerm: "",
   });
   const [showDetailModal, setShowDetailModal] = useState(false);
+  const [detailPokemon, setDetailPokemon] = useState({});
 
   // Load all Pokemon
   useEffect(() => {
@@ -75,7 +76,12 @@ const PokemonList = () => {
     setNumPokemon(numPokemon + POKEMON_PER_LOAD);
   };
 
-  const toggleModal = () => {
+  const toggleModal = (pokemonDetails) => {
+    if (pokemonDetails) {
+      setDetailPokemon(pokemonDetails);
+    } else {
+      setDetailPokemon({});
+    }
     setShowDetailModal((value) => !value);
   };
 
@@ -114,7 +120,9 @@ const PokemonList = () => {
           </button>
         )}
       </div>
-      {showDetailModal && <DetailModal toggleModal={toggleModal} />}
+      {showDetailModal && (
+        <DetailModal detailPokemon={detailPokemon} toggleModal={toggleModal} />
+      )}
     </>
   );
 };
