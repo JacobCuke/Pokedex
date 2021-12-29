@@ -52,6 +52,7 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
           <h3 className="pokemon-text">
             {formatPokemonName(detailPokemon.species.name)}
           </h3>
+          <div className="pokemon-genera info-text">Seed Pokémon</div>
           <div className="type-list">
             {detailPokemon.types.map((type) => (
               <span
@@ -64,7 +65,6 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
               </span>
             ))}
           </div>
-          <div className="pokemon-genera">Seed Pokémon</div>
         </div>
         <div className="info-box-stats"></div>
         <button className="modal-close" onClick={toggleModal}>
