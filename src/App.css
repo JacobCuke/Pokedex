@@ -26,6 +26,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -258,7 +259,7 @@ body {
   flex-direction: column;
   align-items: center;
   min-width: 200px;
-  height: 260px;
+  height: 318px;
   padding: 1.5rem 0;
   margin: 2rem;
   transition: all 0.2s ease-in-out;
@@ -452,12 +453,19 @@ body {
 }
 
 .pokemon-genera {
-  margin-top: 4px;
+  margin-top: 7px;
   font-size: 1.1rem;
 }
 
 .info-box-sprite .type-list {
   margin-top: 16px;
+}
+
+.pokemon-dimensions {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 15px;
 }
 
 .info-box-stats {

@@ -44,7 +44,7 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
         }}
       >
         {/* <h3>{formatPokemonName(detailPokemon.species.name)}</h3> */}
-        <div className="info-box-sprite">
+        <div className="info-box-sprite info-text">
           <h4 className="pokemon-text">
             {"#" + ("00" + detailPokemon.id).slice(-3)}
           </h4>
@@ -66,7 +66,7 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
           <h3 className="pokemon-text">
             {formatPokemonName(detailPokemon.species.name)}
           </h3>
-          <div className="pokemon-genera info-text">
+          <div className="pokemon-genera">
             {loading ? "Loading..." : speciesInfo.genera[7].genus}
           </div>
           <div className="type-list">
@@ -80,6 +80,16 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
                   type.type.name.slice(1)}
               </span>
             ))}
+          </div>
+          <div className="pokemon-dimensions">
+            <div className="pokemon-height">
+              <h5>Height</h5>
+              <span>{detailPokemon.height / 10}m</span>
+            </div>
+            <div className="pokemon-weight">
+              <h5>Weight</h5>
+              <span>{detailPokemon.weight / 10}kg</span>
+            </div>
           </div>
         </div>
         <div className="info-box-stats"></div>
