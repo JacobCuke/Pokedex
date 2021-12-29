@@ -468,6 +468,42 @@ body {
   margin-top: 15px;
 }
 
+.pokemon-gender {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gender-ratio-container {
+  height: 18px;
+  width: 100%;
+  margin-top: 7px;
+  background-color: #a7a7a7;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gender-ratio-container span {
+  font-size: 0.7rem;
+  color: black;
+  text-shadow: none;
+}
+
+.gender-ratio-segment {
+  height: 18px;
+  display: inline-block;
+}
+
+.gender-percentages {
+  font-size: 0.8rem;
+  margin-top: 7px;
+}
+
 .info-box-stats {
   background-color: rgba(0, 0, 0, 0.2);
   height: 100%;

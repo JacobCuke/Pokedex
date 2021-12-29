@@ -91,6 +91,54 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
               <span>{detailPokemon.weight / 10}kg</span>
             </div>
           </div>
+          <div className="pokemon-gender">
+            <h5>Gender Ratio</h5>
+            <div className="gender-ratio-container">
+              {loading ? (
+                <span>Loading...</span>
+              ) : speciesInfo.gender_rate === -1 ? (
+                <span>Gender Unknown</span>
+              ) : (
+                <>
+                  <div
+                    className="gender-ratio-segment"
+                    style={{
+                      backgroundColor: "#3355FF",
+                      width: `${100 - speciesInfo.gender_rate * 12.5}%`,
+                      borderRadius:
+                        speciesInfo.gender_rate === 0
+                          ? "1rem"
+                          : "1rem 0 0 1rem",
+                    }}
+                  ></div>
+                  <div
+                    className="gender-ratio-segment"
+                    style={{
+                      backgroundColor: "#FF77DD",
+                      width: `${speciesInfo.gender_rate * 12.5}%`,
+                      borderRadius:
+                        speciesInfo.gender_rate === 8
+                          ? "1rem"
+                          : "0 1rem 1rem 0",
+                    }}
+                  ></div>
+                </>
+              )}
+            </div>
+            <div
+              className="gender-percentages"
+              style={{
+                opacity: loading ? 0 : speciesInfo.gender_rate === -1 ? 0 : 1,
+              }}
+            >
+              <span style={{ color: "#6982ff" }}>
+                {loading ? "-" : 100 - speciesInfo.gender_rate * 12.5}% male,{" "}
+              </span>
+              <span style={{ color: "#FF77DD" }}>
+                {loading ? "-" : speciesInfo.gender_rate * 12.5}% female
+              </span>
+            </div>
+          </div>
         </div>
         <div className="info-box-stats"></div>
         <button className="modal-close" onClick={toggleModal}>
