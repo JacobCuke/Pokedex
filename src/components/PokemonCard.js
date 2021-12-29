@@ -58,7 +58,7 @@ const PokemonCard = ({ pokemonDetails, toggleModal }) => {
   );
 };
 
-const getTypeColorGradient = (typesArray) => {
+export const getTypeColorGradient = (typesArray) => {
   if (typesArray.length === 1) {
     return [
       TYPE_COLORS[typesArray[0].type.name],
