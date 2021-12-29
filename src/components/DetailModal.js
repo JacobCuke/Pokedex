@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { formatPokemonName } from "./Api";
+import { useState, useEffect, useRef } from "react";
+import { getPokemonDetails, formatPokemonName } from "./Api";
 import { getTypeColorGradient } from "./PokemonCard";
 import { TYPE_COLORS } from "../constants/constants";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -8,6 +8,20 @@ import pokeballIcon from "../assets/img/pokeball-icon.png";
 
 const DetailModal = ({ detailPokemon, toggleModal }) => {
   const modalBackground = useRef();
+  const [speciesInfo, setSpeciesInfo] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getSpeciesInfo = async () => {
+      const data = await getPokemonDetails(detailPokemon.species.url);
+      setSpeciesInfo(data);
+      setLoading(false);
+    };
+
+    if (detailPokemon != null) {
+      getSpeciesInfo();
+    }
+  }, [detailPokemon]);
 
   const handleBackgroundClick = (e) => {
     if (e.target === modalBackground.current) {
@@ -52,7 +66,9 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
           <h3 className="pokemon-text">
             {formatPokemonName(detailPokemon.species.name)}
           </h3>
-          <div className="pokemon-genera info-text">Seed Pokémon</div>
+          <div className="pokemon-genera info-text">
+            {loading ? "Loading..." : speciesInfo.genera[7].genus}
+          </div>
           <div className="type-list">
             {detailPokemon.types.map((type) => (
               <span
