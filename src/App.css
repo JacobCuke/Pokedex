@@ -400,6 +400,7 @@ body {
   background-color: transparent;
   cursor: pointer;
   font-size: 3rem;
+  display: none;
 }
 
 .info-box-sprite {
@@ -505,10 +506,33 @@ body {
 }
 
 .info-box-stats {
-  background-color: rgba(0, 0, 0, 0.2);
-  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  /* background-color: pink; */
+  /* height: 100%; */
   width: 100%;
   border-radius: 1rem;
   margin-left: 30px;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.info-box-stats div {
+  background-color: rgba(0, 0, 0, 0.2);
+  /* min-height: 100px; */
+  margin-bottom: 30px;
+  border-radius: 1rem;
+  padding: 13px;
+}
+
+.info-box-stats div h5 {
+  font-size: 1rem;
+}
+
+.info-box-stats div p {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  text-shadow: 2px 2px 5px #3c3636;
 }

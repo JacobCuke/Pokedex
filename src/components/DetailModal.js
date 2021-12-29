@@ -43,7 +43,6 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
           background: `linear-gradient(${typeColorGradient[0]} 35%, ${typeColorGradient[1]}) 100%`,
         }}
       >
-        {/* <h3>{formatPokemonName(detailPokemon.species.name)}</h3> */}
         <div className="info-box-sprite info-text">
           <h4 className="pokemon-text">
             {"#" + ("00" + detailPokemon.id).slice(-3)}
@@ -140,7 +139,22 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
             </div>
           </div>
         </div>
-        <div className="info-box-stats"></div>
+        <div className="info-box-stats">
+          <div className="pokemon-description">
+            <h5 className="pokemon-text">Description</h5>
+            <p>
+              {loading
+                ? "Loading..."
+                : speciesInfo.flavor_text_entries
+                    .slice()
+                    .reverse()
+                    .find((flavor) => flavor.language.name === "en")
+                    .flavor_text}
+            </p>
+          </div>
+          <div className="pokemon-stats"></div>
+          <div className="pokemon-evolution"></div>
+        </div>
         <button className="modal-close" onClick={toggleModal}>
           &times;
         </button>
