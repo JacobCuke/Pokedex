@@ -38,6 +38,18 @@ const formatPokemonName = (name) => {
     .join(" ");
 };
 
+const formatStatName = (name) => {
+  if (name === "hp") return "HP";
+
+  return name
+    .toLowerCase()
+    .split("-")
+    .map((s) => {
+      return s.charAt(0).toUpperCase() + s.substring(1);
+    })
+    .join(" ");
+};
+
 const getJapaneseName = async (id) => {
   const response = await axios.get(
     `https://pokeapi.co/api/v2/pokemon-species/${id}`
@@ -50,4 +62,5 @@ export {
   getPokemonDetails,
   getJapaneseName,
   formatPokemonName,
+  formatStatName,
 };

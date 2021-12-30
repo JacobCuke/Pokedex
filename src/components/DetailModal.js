@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { getPokemonDetails, formatPokemonName } from "./Api";
+import { getPokemonDetails, formatPokemonName, formatStatName } from "./Api";
 import { getTypeColorGradient } from "./PokemonCard";
-import { TYPE_COLORS } from "../constants/constants";
+import { TYPE_COLORS, STAT_COLORS } from "../constants/constants";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import pokeballIcon from "../assets/img/pokeball-icon.png";
@@ -139,8 +139,8 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
             </div>
           </div>
         </div>
-        <div className="info-box-stats">
-          <div className="pokemon-description">
+        <div className="info-box-right">
+          <div className="pokemon-description right-section">
             <h5 className="pokemon-text">Description</h5>
             <p>
               {loading
@@ -152,8 +152,32 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
                     .flavor_text}
             </p>
           </div>
-          <div className="pokemon-stats"></div>
-          <div className="pokemon-evolution"></div>
+          <div className="pokemon-stats right-section">
+            <h5 className="pokemon-text">Stats</h5>
+            <div className="parameter-container">
+              {detailPokemon.stats.map((stat) => {
+                return (
+                  <div key={stat.stat.name} className="parameter-section">
+                    <h6 className="info-text">
+                      {formatStatName(stat.stat.name)}
+                    </h6>
+                    <div className="statbar-container">
+                      <div
+                        className="statbar-segment"
+                        style={{
+                          backgroundColor: STAT_COLORS[stat.stat.name],
+                          width: `${(stat.base_stat / 255) * 100}%`,
+                        }}
+                      >
+                        <span>{stat.base_stat}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="pokemon-evolution right-section"></div>
         </div>
         <button className="modal-close" onClick={toggleModal}>
           &times;

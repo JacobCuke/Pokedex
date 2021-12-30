@@ -117,3 +117,12 @@ export const TYPE_SECONDARY_COLORS = {
 };
 
 export const SORT_BY = ["id", "name"];
+
+export const STAT_COLORS = {
+  hp: "#ff0100",
+  attack: "#f08030",
+  defense: "#f9d02f",
+  "special-attack": "#6790f0",
+  "special-defense": "#78c84f",
+  speed: "#f95887",
+};
