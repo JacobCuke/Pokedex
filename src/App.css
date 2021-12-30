@@ -390,7 +390,7 @@ body {
 
 .modal-container {
   height: calc(100vh - 70px);
-  max-height: 670px;
+  max-height: 600px;
   width: 65%;
   background-color: #e3e3e3;
   border-radius: 1rem;
@@ -556,12 +556,16 @@ body {
 }
 
 .parameter-section {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .parameter-section h6 {
   font-size: 0.8rem;
-  padding-left: 5px;
+  padding-right: 14px;
+  text-align: right;
+  width: 100px;
 }
 
 .statbar-container {
