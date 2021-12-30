@@ -610,11 +610,13 @@ body {
   margin: 7px 0;
 }
 
-.evolution-sprite {
+.evolution-sprite,
+.evolution-sprite-container {
   width: 100px;
 }
 
-.two-items .evolution-sprite {
+.two-items .evolution-sprite,
+.two-items .evolution-sprite-container {
   width: 70px;
 }
 
@@ -624,7 +626,8 @@ body {
   justify-content: center;
 }
 
-.more-items .evolution-sprite {
+.more-items .evolution-sprite,
+.more-items .evolution-sprite-container {
   width: 60px;
 }
 

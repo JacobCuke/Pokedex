@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { getPokemonDetails, formatPokemonName, formatStatName } from "./Api";
+import {
+  getPokemonDetails,
+  formatPokemonName,
+  formatStatName,
+  getPokemonEvolutions,
+} from "./Api";
 import { getTypeColorGradient } from "./PokemonCard";
 import { TYPE_COLORS, STAT_COLORS } from "../constants/constants";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -9,12 +14,19 @@ import pokeballIcon from "../assets/img/pokeball-icon.png";
 const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
   const modalBackground = useRef();
   const [speciesInfo, setSpeciesInfo] = useState();
+  const [evolutionInfo, setEvolutionInfo] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getSpeciesInfo = async () => {
-      const data = await getPokemonDetails(detailPokemon.species.url);
-      setSpeciesInfo(data);
+      const speciesData = await getPokemonDetails(detailPokemon.species.url);
+      setSpeciesInfo(speciesData);
+
+      const evolutionData = await getPokemonEvolutions(
+        speciesData.evolution_chain.url
+      );
+      setEvolutionInfo(evolutionData);
+
       setLoading(false);
     };
 
