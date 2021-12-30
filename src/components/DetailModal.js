@@ -143,13 +143,7 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
           <div className="pokemon-description right-section">
             <h5 className="pokemon-text">Description</h5>
             {loading ? (
-              <p>
-                Loading...
-                <span style={{ opacity: 0 }}>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Doloribus fugit laboriosam voluptatum iusto
-                </span>
-              </p>
+              <p>Loading...</p>
             ) : (
               <p>
                 {
