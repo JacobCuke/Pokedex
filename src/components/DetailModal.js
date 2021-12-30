@@ -10,6 +10,7 @@ import { TYPE_COLORS, STAT_COLORS } from "../constants/constants";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import pokeballIcon from "../assets/img/pokeball-icon.png";
+import loadingIcon from "../assets/img/pikachu-running.gif";
 
 const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
   const modalBackground = useRef();
@@ -195,7 +196,7 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
           <div className="pokemon-evolution right-section">
             <h5 className="pokemon-text">Evolution</h5>
             <div className="evolution-container">
-              {!loading &&
+              {!loading ? (
                 evolutionInfo.map((column, i) => (
                   <React.Fragment key={i}>
                     <div
@@ -230,7 +231,14 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
                       </div>
                     )}
                   </React.Fragment>
-                ))}
+                ))
+              ) : (
+                <img
+                  className="evolution-loading"
+                  src={loadingIcon}
+                  alt="loading icon"
+                />
+              )}
             </div>
           </div>
         </div>
