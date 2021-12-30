@@ -389,8 +389,8 @@ body {
 }
 
 .modal-container {
-  height: calc(100vh - 100px);
-  max-height: 550px;
+  height: calc(100vh - 70px);
+  max-height: 670px;
   width: 65%;
   background-color: #e3e3e3;
   border-radius: 1rem;
@@ -587,12 +587,13 @@ body {
 
 .pokemon-evolution {
   margin-bottom: 0;
+  min-height: 192px;
 }
 
 .evolution-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .evolution-column {
@@ -613,11 +614,13 @@ body {
 .evolution-sprite,
 .evolution-sprite-container {
   width: 100px;
+  height: 100px;
 }
 
 .two-items .evolution-sprite,
 .two-items .evolution-sprite-container {
   width: 70px;
+  height: 70px;
 }
 
 .evolution-column.more-items {
@@ -629,6 +632,7 @@ body {
 .more-items .evolution-sprite,
 .more-items .evolution-sprite-container {
   width: 60px;
+  height: 60px;
 }
 
 .more-items .evolution-item {
@@ -640,6 +644,18 @@ body {
   font-size: 4rem;
   color: #d5d5d5;
   text-shadow: 2px 2px 5px #3c3636;
+  display: flex;
+  align-items: center;
+}
+
+.evolution-arrow span {
+  margin-bottom: 6px;
+}
+
+@media screen and (max-width: 1420px) {
+  .evolution-container {
+    flex-wrap: wrap;
+  }
 }
 
 @media screen and (max-width: 796px) {

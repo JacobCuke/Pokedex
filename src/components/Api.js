@@ -30,8 +30,6 @@ const getPokemonEvolutions = async (url) => {
   const response = await axios.get(url);
   const evoData = response.data;
 
-  console.log(evoData.chain);
-
   // Breadth first traversal of the evolution tree
   const traverseEvolutionTree = (node, level) => {
     if (evolutions[level] === undefined) evolutions[level] = [];

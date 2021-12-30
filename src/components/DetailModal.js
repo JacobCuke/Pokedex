@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   getPokemonDetails,
   formatPokemonName,
@@ -14,7 +14,7 @@ import pokeballIcon from "../assets/img/pokeball-icon.png";
 const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
   const modalBackground = useRef();
   const [speciesInfo, setSpeciesInfo] = useState();
-  const [evolutionInfo, setEvolutionInfo] = useState();
+  const [evolutionInfo, setEvolutionInfo] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -195,112 +195,42 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
           <div className="pokemon-evolution right-section">
             <h5 className="pokemon-text">Evolution</h5>
             <div className="evolution-container">
-              <div className="evolution-column">
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[132].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[132].name}
-                    effect="blur"
-                  />
-                </div>
-              </div>
-              <div className="evolution-column evolution-arrow">
-                <span>&#10145;</span>
-              </div>
-              <div className="evolution-column more-items">
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[133].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[133].name}
-                    effect="blur"
-                  />
-                </div>
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[134].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[134].name}
-                    effect="blur"
-                  />
-                </div>
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[135].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[135].name}
-                    effect="blur"
-                  />
-                </div>
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[195].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[195].name}
-                    effect="blur"
-                  />
-                </div>
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[196].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[196].name}
-                    effect="blur"
-                  />
-                </div>
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[469].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[469].name}
-                    effect="blur"
-                  />
-                </div>
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[470].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[470].name}
-                    effect="blur"
-                  />
-                </div>
-                <div className="evolution-item">
-                  <LazyLoadImage
-                    className="evolution-sprite"
-                    src={
-                      allPokemonDetails[699].sprites.other["official-artwork"]
-                        .front_default
-                    }
-                    alt={allPokemonDetails[699].name}
-                    effect="blur"
-                  />
-                </div>
-              </div>
+              {!loading &&
+                evolutionInfo.map((column, i) => (
+                  <React.Fragment key={i}>
+                    <div
+                      className={`evolution-column ${
+                        column.length === 2
+                          ? "two-items"
+                          : column.length > 2
+                          ? "more-items"
+                          : ""
+                      }`}
+                    >
+                      {column.map((item) => (
+                        <div key={item} className="evolution-item">
+                          <div className="evolution-sprite-container">
+                            <LazyLoadImage
+                              className="evolution-sprite"
+                              src={
+                                allPokemonDetails[item - 1].sprites.other[
+                                  "official-artwork"
+                                ].front_default
+                              }
+                              alt={allPokemonDetails[item - 1].name}
+                              effect="blur"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    {i + 1 !== evolutionInfo.length && (
+                      <div className="evolution-arrow">
+                        <span>&#10145;</span>
+                      </div>
+                    )}
+                  </React.Fragment>
+                ))}
             </div>
           </div>
         </div>
