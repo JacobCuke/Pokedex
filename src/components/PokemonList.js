@@ -121,7 +121,11 @@ const PokemonList = () => {
         )}
       </div>
       {showDetailModal && (
-        <DetailModal detailPokemon={detailPokemon} toggleModal={toggleModal} />
+        <DetailModal
+          detailPokemon={detailPokemon}
+          allPokemonDetails={allPokemonDetails}
+          toggleModal={toggleModal}
+        />
       )}
     </>
   );

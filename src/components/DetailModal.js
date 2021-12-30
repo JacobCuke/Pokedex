@@ -6,7 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import pokeballIcon from "../assets/img/pokeball-icon.png";
 
-const DetailModal = ({ detailPokemon, toggleModal }) => {
+const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
   const modalBackground = useRef();
   const [speciesInfo, setSpeciesInfo] = useState();
   const [loading, setLoading] = useState(true);
@@ -180,7 +180,117 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
               })}
             </div>
           </div>
-          <div className="pokemon-evolution right-section"></div>
+          <div className="pokemon-evolution right-section">
+            <h5 className="pokemon-text">Evolution</h5>
+            <div className="evolution-container">
+              <div className="evolution-column">
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[132].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[132].name}
+                    effect="blur"
+                  />
+                </div>
+              </div>
+              <div className="evolution-column evolution-arrow">
+                <span>&#10145;</span>
+              </div>
+              <div className="evolution-column more-items">
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[133].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[133].name}
+                    effect="blur"
+                  />
+                </div>
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[134].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[134].name}
+                    effect="blur"
+                  />
+                </div>
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[135].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[135].name}
+                    effect="blur"
+                  />
+                </div>
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[195].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[195].name}
+                    effect="blur"
+                  />
+                </div>
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[196].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[196].name}
+                    effect="blur"
+                  />
+                </div>
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[469].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[469].name}
+                    effect="blur"
+                  />
+                </div>
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[470].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[470].name}
+                    effect="blur"
+                  />
+                </div>
+                <div className="evolution-item">
+                  <LazyLoadImage
+                    className="evolution-sprite"
+                    src={
+                      allPokemonDetails[699].sprites.other["official-artwork"]
+                        .front_default
+                    }
+                    alt={allPokemonDetails[699].name}
+                    effect="blur"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <button className="modal-close" onClick={toggleModal}>
           &times;
