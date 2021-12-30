@@ -638,3 +638,24 @@ body {
   color: #d5d5d5;
   text-shadow: 2px 2px 5px #3c3636;
 }
+
+@media screen and (max-width: 796px) {
+  .modal-container {
+    flex-wrap: wrap;
+    width: 80%;
+  }
+
+  .info-box-sprite {
+    margin-bottom: 20px;
+  }
+
+  .info-box-right {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 386px) {
+  .modal-container {
+    width: 100%;
+  }
+}
