@@ -142,15 +142,24 @@ const DetailModal = ({ detailPokemon, toggleModal }) => {
         <div className="info-box-right">
           <div className="pokemon-description right-section">
             <h5 className="pokemon-text">Description</h5>
-            <p>
-              {loading
-                ? "Loading..."
-                : speciesInfo.flavor_text_entries
+            {loading ? (
+              <p>
+                Loading...
+                <span style={{ opacity: 0 }}>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Doloribus fugit laboriosam voluptatum iusto
+                </span>
+              </p>
+            ) : (
+              <p>
+                {
+                  speciesInfo.flavor_text_entries
                     .slice()
                     .reverse()
-                    .find((flavor) => flavor.language.name === "en")
-                    .flavor_text}
-            </p>
+                    .find((flavor) => flavor.language.name === "en").flavor_text
+                }
+              </p>
+            )}
           </div>
           <div className="pokemon-stats right-section">
             <h5 className="pokemon-text">Stats</h5>

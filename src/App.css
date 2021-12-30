@@ -23,6 +23,15 @@
   }
 }
 
+@keyframes statSlideIn {
+  0% {
+    max-width: 5%;
+  }
+  100% {
+    max-width: 100%;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -568,4 +577,5 @@ body {
   font-weight: 700;
   font-size: 0.8rem;
   min-width: 5%;
+  animation: statSlideIn 3.5s ease-in-out;
 }
