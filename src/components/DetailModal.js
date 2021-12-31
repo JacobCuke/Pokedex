@@ -14,13 +14,14 @@ import loadingIcon from "../assets/img/pikachu-running.gif";
 
 const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
   const modalBackground = useRef();
+  const [pokemonDetails, setPokemonDetails] = useState(detailPokemon);
   const [speciesInfo, setSpeciesInfo] = useState();
   const [evolutionInfo, setEvolutionInfo] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getSpeciesInfo = async () => {
-      const speciesData = await getPokemonDetails(detailPokemon.species.url);
+      const speciesData = await getPokemonDetails(pokemonDetails.species.url);
       setSpeciesInfo(speciesData);
 
       const evolutionData = await getPokemonEvolutions(
@@ -31,10 +32,11 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
       setLoading(false);
     };
 
-    if (detailPokemon != null) {
+    setLoading(true);
+    if (pokemonDetails != null) {
       getSpeciesInfo();
     }
-  }, [detailPokemon]);
+  }, [pokemonDetails]);
 
   const handleBackgroundClick = (e) => {
     if (e.target === modalBackground.current) {
@@ -42,7 +44,11 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
     }
   };
 
-  const typeColorGradient = getTypeColorGradient(detailPokemon.types);
+  const typeColorGradient = getTypeColorGradient(pokemonDetails.types);
+
+  const changeCurrentPokemon = (pokemonId) => {
+    setPokemonDetails(allPokemonDetails[pokemonId - 1]);
+  };
 
   return (
     <div
@@ -58,7 +64,7 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
       >
         <div className="info-box-sprite info-text">
           <h4 className="pokemon-text">
-            {"#" + ("00" + detailPokemon.id).slice(-3)}
+            {"#" + ("00" + pokemonDetails.id).slice(-3)}
           </h4>
           <img
             className="pokeball-icon"
@@ -69,20 +75,20 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
             <LazyLoadImage
               className="pokemon-sprite"
               src={
-                detailPokemon.sprites.other["official-artwork"].front_default
+                pokemonDetails.sprites.other["official-artwork"].front_default
               }
-              alt={detailPokemon.name}
+              alt={pokemonDetails.name}
               effect="blur"
             />
           </div>
           <h3 className="pokemon-text">
-            {formatPokemonName(detailPokemon.species.name)}
+            {formatPokemonName(pokemonDetails.species.name)}
           </h3>
           <div className="pokemon-genera">
             {loading ? "Loading..." : speciesInfo.genera[7].genus}
           </div>
           <div className="type-list">
-            {detailPokemon.types.map((type) => (
+            {pokemonDetails.types.map((type) => (
               <span
                 key={type.slot}
                 className="type-badge"
@@ -96,11 +102,11 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
           <div className="pokemon-dimensions">
             <div className="pokemon-height">
               <h5>Height</h5>
-              <span>{detailPokemon.height / 10}m</span>
+              <span>{pokemonDetails.height / 10}m</span>
             </div>
             <div className="pokemon-weight">
               <h5>Weight</h5>
-              <span>{detailPokemon.weight / 10}kg</span>
+              <span>{pokemonDetails.weight / 10}kg</span>
             </div>
           </div>
           <div className="pokemon-gender">
@@ -171,7 +177,7 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
           <div className="pokemon-stats right-section">
             <h5 className="pokemon-text">Stats</h5>
             <div className="parameter-container">
-              {detailPokemon.stats.map((stat) => {
+              {pokemonDetails.stats.map((stat) => {
                 return (
                   <div key={stat.stat.name} className="parameter-section">
                     <h6 className="info-text">
@@ -209,7 +215,11 @@ const DetailModal = ({ detailPokemon, allPokemonDetails, toggleModal }) => {
                       }`}
                     >
                       {column.map((item) => (
-                        <div key={item} className="evolution-item">
+                        <div
+                          key={item}
+                          className="evolution-item"
+                          onClick={() => changeCurrentPokemon(item)}
+                        >
                           <div className="evolution-sprite-container">
                             <LazyLoadImage
                               className="evolution-sprite"

@@ -637,6 +637,7 @@ body {
   border-radius: 50%;
   padding: 15px;
   margin: 7px 0;
+  cursor: pointer;
 }
 
 .evolution-sprite,
