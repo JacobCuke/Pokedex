@@ -408,7 +408,7 @@ body {
 
 .modal-container {
   height: calc(100vh - 70px);
-  max-height: 610px;
+  max-height: 615px;
   width: 65%;
   background-color: #e3e3e3;
   border-radius: 1rem;
@@ -610,7 +610,11 @@ body {
 
 .pokemon-evolution {
   margin-bottom: 0;
-  min-height: 192px;
+  min-height: 197px;
+}
+
+.pokemon-evolution h5 {
+  margin-bottom: 5px;
 }
 
 .evolution-container {
@@ -657,6 +661,11 @@ body {
   padding: 15px;
   margin: 7px 0;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.evolution-item:hover {
+  transform: scale(1.1);
 }
 
 .evolution-sprite,
