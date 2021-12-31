@@ -113,7 +113,7 @@ body {
 .page-heading {
   text-align: center;
   font-size: 2.5rem;
-  margin-top: 30px;
+  margin-top: 37px;
   letter-spacing: 5px;
 }
 
@@ -215,7 +215,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 15px 0;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .filter-item {
@@ -268,6 +268,7 @@ body {
   padding: 0 40px;
   margin: 0;
   animation: fadeIn 1s ease-in-out;
+  max-width: 1500px;
 }
 
 .pokemon-card {
@@ -279,10 +280,16 @@ body {
   min-width: 200px;
   height: 318px;
   padding: 1.5rem 0;
-  margin: 2rem;
+  margin: 1.7rem;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .pokemon-card {
+    margin: 1rem 0.8rem;
+  }
 }
 
 .pokemon-card:hover {
@@ -410,6 +417,7 @@ body {
   display: flex;
   animation: dropDown 0.4s ease-in-out;
   overflow-y: scroll;
+  max-width: 960px;
 }
 
 .modal-close {
