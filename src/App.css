@@ -203,12 +203,19 @@ body {
     rgb(0, 58, 112) 6.93119px -0.979076px 0px;
 }
 
+@media screen and (max-width: 400px) {
+  .page-heading {
+    font-size: 10vw;
+  }
+}
+
 .filters-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 15px 0;
+  margin-top: 10px;
 }
 
 .filter-item {
