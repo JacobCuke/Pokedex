@@ -359,7 +359,7 @@ body {
 
 .load-more {
   font-size: 1.25rem;
-  padding: 15px 200px;
+  padding: 15px 0;
   margin-top: 30px;
   margin-bottom: 150px;
   border-radius: 1.6rem;
@@ -370,7 +370,9 @@ body {
   border: 2px solid rgba(154, 247, 242, 0.8);
   cursor: pointer;
   box-sizing: border-box;
-  min-width: 600px;
+  width: 64vw;
+  min-width: 230px;
+  max-width: 600px;
 }
 
 .load-more:hover {
