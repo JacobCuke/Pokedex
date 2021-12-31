@@ -207,6 +207,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 15px 0;
 }
 
 .filter-item {
