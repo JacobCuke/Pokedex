@@ -38,12 +38,6 @@
   box-sizing: border-box;
 }
 
-html {
-  overscroll-behavior: none;
-  overflow: hidden;
-  height: 100%;
-}
-
 body {
   overflow: auto;
   height: 100%;
