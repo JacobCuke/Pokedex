@@ -36,7 +36,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 body {
@@ -49,6 +49,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 .bg-image-container {
